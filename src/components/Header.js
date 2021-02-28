@@ -87,6 +87,8 @@ width:28px;
 height:28px;
 border:2px solid white;
 border-radius:3px;
+//padding-left:80rem;
+
 img{
     width:100%;
 }
