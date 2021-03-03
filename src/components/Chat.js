@@ -1,91 +1,100 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import StarOutlineIcon from '@material-ui/icons/StarOutline';
-function Chat() {
+import ChatInput from './ChatInput';
+import ChatMessage from './ChatMessage';
+function chat() {
     return (
-        <ChatContainer>
-            <ChatHeader>
-                 <ChannelInfo>
+        <Container>
+
+            <HeaderSection>
+
+                <Channel>
+
                     <ChannelName>
-                        # React Community 
-                        <Staricon>
-                            <StarOutlineIcon />
-                        </Staricon>
-                          
+                        #React Community
                     </ChannelName>
-                 </ChannelInfo>  
-                 <CommunityInfo>
-                    We are a Community of React JS and officially React V16.8 Supports Hooks
-                    <Details>
-                        <Message>
-                           Deatils
-                           <Dicon>
-                                 <InfoOutlinedIcon />
-                           </Dicon> 
-                        </Message>
-                    </Details> 
-                </CommunityInfo> 
-            </ChatHeader>
-        </ChatContainer>
+                    <ChannelInfo>
+                            This is the React community channel
+                    </ChannelInfo>
+
+                </Channel>
+
+                <ChannelDetail>
+                        <div>
+                            Details
+                        </div>
+                        <Info>
+                            <InfoOutlinedIcon />
+                        </Info>
+                      
+                </ChannelDetail>
+
+
+            </HeaderSection>
+
+            <MessageContainer>
+
+               <ChatMessage />
+
+            </MessageContainer>
+
+            <ChatInput />
+
+            
+
+
+
+        </Container>
     )
 }
 
-export default Chat
-const ChatContainer = styled.div`
-background :white;
-`;
+export default chat;
 
-const ChatHeader = styled.div`
-height: 65px;
-//background:red;
+const Container = styled.div`
 display:grid;
-grid-template-row:15% auto;
-border-bottom: 0.5px solid rgb(54,69,79);
+grid-template-rows:64px auto min-content;
+`;
 
-
-`;
-const ChannelInfo = styled.div`
-width:14.5rem;
-height:100%;
-//background:green;
-`;
-const ChannelName = styled.div`
-font-family:Sans-serif;
-padding-top:10px;
-padding-left:10px;
-font-weight:bold;
-font-size:1rem;
-color:black;
-display:flex;
-align-items:center;
-justify-content:space-between;
-`;
-const Staricon = styled.div`
-padding-right:2rem;
-`
-const CommunityInfo = styled.div`
-font-size:0.9rem;
-padding-left:10px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-`
-const Details = styled.div`
-`
-const Message = styled.div`
+const HeaderSection = styled.div`
+//background:red;
+padding-left:20px;
 padding-right:20px;
-font-family:Sans-serif;
 display:flex;
 align-items:center;
-justify-content:space-between;
-//padding-top:5rem;
+border-bottom: 1px solid rgba(83,39,83,.13);
+justify-content: space-between;
 
+
+`;
+
+const Channel = styled.div`
+`;
+
+const ChannelDetail = styled.div`
+display:flex;
+align-items:center;
+color:#606060;
+
+`;
+
+const ChannelName = styled.div`
+font-weight:700;
+
+`;
+
+const ChannelInfo = styled.div`
+font-weight:700;
+color:#606060;
+font-size: 13px;
+margin-top: 8px;
+
+`;
+const Info = styled( InfoOutlinedIcon)`
+margin-left:10px;
 `
-const Dicon = styled.div`
 
-padding-left:1rem;
-//padding-bottom:5rem;
-cursor:pointer;
+const MessageContainer = styled.div`
+//background:yellow;
+`;
 
-`
