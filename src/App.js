@@ -14,6 +14,8 @@ function App() {
 
    const [rooms, setstate] = useState([]);
 
+   const [user, setUser] = useState();
+
   const getChannels = () =>{
 
     db.collection('rooms').onSnapshot((snapshot) =>{
@@ -37,6 +39,13 @@ console.log(rooms);
   return (
     <div className="App">
       <Router>
+      {     
+         !user ? 
+
+         <Login />
+
+         :
+
           <Container>
               <Header />
                 <Main>
@@ -46,11 +55,12 @@ console.log(rooms);
                            <Chat />
                        </Route>
                        <Route path="/">
-                            <Login />
+                            <Login setUser={setUser}/>
                        </Route>
                    </Switch>
                 </Main> 
           </Container>
+      }
       </Router>
     </div>
   );
