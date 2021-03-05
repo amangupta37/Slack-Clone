@@ -9,6 +9,10 @@ import CodeOutlinedIcon from '@material-ui/icons/CodeOutlined';
 import LinkOffOutlinedIcon from '@material-ui/icons/LinkOffOutlined';
 import FormatListNumberedOutlinedIcon from '@material-ui/icons/FormatListNumberedOutlined';
 import FormatListBulletedOutlinedIcon from '@material-ui/icons/FormatListBulletedOutlined';
+
+
+
+
 function ChatInput() {
     return (
         <Container>
@@ -35,9 +39,9 @@ function ChatInput() {
 
                                    <CodeOutlinedIcon />
 
-                                    <LinkOffOutlinedIcon />
+                                   <LinkOffOutlinedIcon />
 
-                                     <FormatListNumberedOutlinedIcon />
+                                   <FormatListNumberedOutlinedIcon />
 
                                     <FormatListBulletedOutlinedIcon />
                         </Newicon>
