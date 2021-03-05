@@ -11,7 +11,7 @@ function ChatMessage() {
 
             <MessageContent>
                 <Name>
-                    User1
+                    Aman Gupta
                     <span>
                         3/01/22 11:13:55 AM
                     </span>
