@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-function Header() {
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+function Header(props) {
     return (
       <Container>
 
@@ -17,11 +18,14 @@ function Header() {
             </Main>
             <UserContainer>
                 <Name>
-                    Aman Gupta
+                    {props.user.name}
                 </Name>
-                <UserImage>
-                    <img src="https://i.imgur.com/6VBx3io.png" alt="img"/>
+                <UserImage >
+                    <img src={props.user.photo} alt="img"/>
                 </UserImage>
+                <Logout onClick={props.Signout} >
+                    <ExitToAppOutlinedIcon />
+                </Logout>
             </UserContainer>
       </Container>
     )
@@ -85,11 +89,18 @@ padding-right:16px;
 const UserImage = styled.div`
 width:28px;
 height:28px;
-border:2px solid white;
+border:1.5px solid white;
 border-radius:3px;
 //padding-left:80rem;
+//cursor:pointer;
 
 img{
     width:100%;
 }
 `
+const Logout = styled.div`
+padding-top:5px;
+padding-left:20px;
+cursor:pointer;
+
+`;
