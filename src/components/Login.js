@@ -2,6 +2,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import {auth,provider} from '../firebase';
+
 function Login(props) {
 
     const signIn = () =>{
@@ -15,7 +16,8 @@ function Login(props) {
                 name:result.user.displayName,
                 photo : result.user.photoURL
             }
-               // props.setUser
+            localStorage.setItem('user', JSON.stringify(newUser))
+             props.setUser(newUser);
            
         })
         .catch((error) =>{
