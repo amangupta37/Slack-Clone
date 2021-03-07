@@ -1,9 +1,31 @@
-import React from 'react'
-import styled from 'styled-components'
+
+import React from 'react';
+import styled from 'styled-components';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import ChatInput from './ChatInput';
 import ChatMessage from './ChatMessage';
-function chat() {
+import db from '../firebase';
+import { useParams } from 'react-router-dom';
+
+
+
+function Chat() {
+    
+
+    let {channelId} = useParams();
+    const getChannel = () =>{
+
+            db.collection('rooms')
+            .doc(channelId)
+            .onSnapshot((snapshoot) =>{
+
+                console.log(snapshoot.data());
+
+            })
+    }
+    getChannel();
+
+
     return (
         <Container>
 
@@ -12,7 +34,7 @@ function chat() {
                 <Channel>
 
                     <ChannelName>
-                        #React Community
+                        #React
                     </ChannelName>
                     <ChannelInfo>
                             This is the React community channel
@@ -41,15 +63,11 @@ function chat() {
 
             <ChatInput />
 
-            
-
-
-
         </Container>
     )
 }
 
-export default chat;
+export default Chat;
 
 const Container = styled.div`
 display:grid;
