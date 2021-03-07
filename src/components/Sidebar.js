@@ -3,11 +3,26 @@ import styled from 'styled-components';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import {Sidebardata} from '../data/Sidebardata';
 //import{NewChannels} from '../data/Channeldata';
-// import db from '../firebase'
+ import db from '../firebase'
 
 import AddIcon from '@material-ui/icons/Add';
-import db from '../firebase';
+//import db from '../firebase';
+import { useHistory } from 'react-router-dom';
+
 function Sidebar(props) {
+
+    const history = useHistory();
+
+    const gotoChannel = (id) =>{
+
+        if(id)
+        {
+            console.log(id);
+            history.push(`/room/${id}`)
+        }
+    }
+
+
 
     const addChannel = () =>{
 
@@ -58,10 +73,10 @@ function Sidebar(props) {
                             Channels
                         </div>
                        
-                        <icon>
+                        <Icon>
                                 <AddIcon onClick ={addChannel} />
 
-                        </icon>
+                        </Icon>
                        
                        
 
@@ -71,7 +86,7 @@ function Sidebar(props) {
                         {   
                             props.room.map(item =>(
 
-                                <Channel>
+                                <Channel onClick={() =>gotoChannel(item.id)}>
                                     # {item.name}
                                 </Channel>
 
@@ -171,3 +186,4 @@ cursor:pointer;
 }
 `;
 
+const Icon = styled.div``;
