@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import db from './firebase';
-import {auth} from './firebase';
+import {auth,provider} from './firebase';
 
 
 function App() {
@@ -17,11 +17,14 @@ function App() {
 
    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-  const getChannels = () =>{
+   const getChannels = () =>{
 
     db.collection('rooms').onSnapshot((snapshot) =>{
 
+      //console.log("this is new snap",snapshot);
+
      setstate(snapshot.docs.map((doc) => {
+       
        return {id: doc.id , name : doc.data().name};
      })
      
@@ -43,7 +46,7 @@ useEffect(() => {
   getChannels();
 }, [])
  
-console.log("User is ", user);
+//console.log("User is ", user);
 
 
   return (
@@ -62,7 +65,7 @@ console.log("User is ", user);
                   <Sidebar room ={rooms} />
                   <Switch>
                        <Route path="/room/:channelID">
-                            <Chat  />
+                            <Chat user={user}  />
                        </Route>
                        <Route path="/">
                             Select or create Channel 
