@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import db from './firebase';
-import {auth,provider} from './firebase';
+import {auth} from './firebase';
 
 
 function App() {
