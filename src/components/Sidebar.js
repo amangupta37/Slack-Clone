@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import {Sidebardata} from '../data/Sidebardata';
 //import{NewChannels} from '../data/Channeldata';
- import db from '../firebase'
+ import db from '../firebase';
 
 import AddIcon from '@material-ui/icons/Add';
 //import db from '../firebase';
@@ -17,7 +17,7 @@ function Sidebar(props) {
 
         if(id)
         {
-            console.log(id);
+           // console.log(id);
             history.push(`/room/${id}`)
         }
     }
