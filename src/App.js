@@ -17,7 +17,7 @@ function App() {
 
    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-   const getChannels = () =>{
+    const getChannels = () =>{
 
     db.collection('rooms').onSnapshot((snapshot) =>{
 
@@ -85,7 +85,7 @@ const Container = styled.div`
 width : 100%;
 height:100vh;
 display:grid;
-grid-template-rows : 38px auto;
+grid-template-rows : 38px minmax(0, 1fr);
 
 `
 const Main = styled.div`
