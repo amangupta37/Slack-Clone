@@ -1,30 +1,78 @@
 
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect , useState } from 'react'
+import styled from 'styled-components'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import ChatInput from './ChatInput';
-import ChatMessage from './ChatMessage';
-import db from '../firebase';
-import { useParams } from 'react-router-dom';
+import ChatInput from './ChatInput'
+import ChatMessage from './ChatMessage'
+import db from '../firebase'
+import { useParams } from 'react-router-dom'
+import firebase from "firebase"
 
-
-
-function Chat() {
+function Chat({user}) {
     
 
-    let {channelId} = useParams();
-    const getChannel = () =>{
+   let {channelID} = useParams();
+
+    const [channel, setChannel] = useState();
+
+    const [messages , setMessages] = useState([]);
+
+
+
+
+    const getMessage = () =>{
+
+        db.collection('rooms')
+        .doc(channelID)
+        .collection('messages')
+        .orderBy('timestamp', 'asc')
+        .onSnapshot((snapshot) =>{
+
+                let messages = snapshot.docs.map((doc) => doc.data());
+                console.log(messages)
+                setMessages(messages);
+
+
+        })
+    }
+
+    const sendMessage = (text) =>{
+
+        if(channelID){
+
+            let payload ={
+                text:text,
+                user: user.name,
+                userImage:user.photo,
+                timestamp:firebase.firestore.Timestamp.now()
+
+            }
+
+            db.collection("rooms").doc(channelID).collection('messages').add(payload);
+
+
+        }
+    }
+
+  const getChannel = () =>{
 
             db.collection('rooms')
-            .doc(channelId)
-            .onSnapshot((snapshoot) =>{
-
-                console.log(snapshoot.data());
+            .doc(channelID)
+            .onSnapshot((snapshot) =>{
+            setChannel(snapshot.data());
 
             })
     }
-    getChannel();
+    
 
+    useEffect(() => {
+        getChannel();
+        getMessage();
+    }, [channelID])
+   
+    console.log(channel);
+
+    
 
     return (
         <Container>
@@ -34,7 +82,7 @@ function Chat() {
                 <Channel>
 
                     <ChannelName>
-                        #React
+                        #{channel && channel.name}
                     </ChannelName>
                     <ChannelInfo>
                             This is the React community channel
@@ -57,11 +105,32 @@ function Chat() {
 
             <MessageContainer>
 
-               <ChatMessage />
+            {
+               
+
+
+                messages.length > 0 && 
+                messages.map((data,index)=>{
+
+                    return <ChatMessage 
+                        text = {data.text}
+                        name={data.user}
+                        image={data.userImage}
+                        timestamp={data.timestamp}
+
+                    />
+
+                })
+
+               
+            }
+
+           
+
 
             </MessageContainer>
 
-            <ChatInput />
+            <ChatInput sendMessage = {sendMessage} />
 
         </Container>
     )
@@ -72,6 +141,7 @@ export default Chat;
 const Container = styled.div`
 display:grid;
 grid-template-rows:64px auto min-content;
+min-height:0;
 `;
 
 const HeaderSection = styled.div`
@@ -113,6 +183,8 @@ margin-left:10px;
 `
 
 const MessageContainer = styled.div`
-//background:yellow;
+display:flex;
+flex-direction: column;
+overflow-y:scroll;
 `;
 
