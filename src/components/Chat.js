@@ -68,9 +68,9 @@ function Chat({user}) {
     useEffect(() => {
         getChannel();
         getMessage();
-    }, [channelID])
+    }, [ channelID])
    
-    console.log(channel);
+    
 
     
 
