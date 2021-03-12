@@ -5,10 +5,6 @@ export const NewChannels = [
         id : 1
     },
 
-    {
-        name : "# Channel",
-        id : 2
-    },
 
     {
         name : "# Channel",
