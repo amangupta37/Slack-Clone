@@ -1,6 +1,6 @@
 # Slack Clone
 
-See live (https://slack-clone-aman-gupta.vercel.app/)
+   [See live] (https://slack-clone-aman-gupta.vercel.app/)
 
 # Getting Started with Create React App
 
