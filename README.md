@@ -1,6 +1,8 @@
 # Slack Clone
 
-   [View live](https://slack-clone-aman-gupta.vercel.app/)
+Real-time chatting application built using React
+
+[View live](https://slack-clone-aman-gupta.vercel.app/)
 
 # Getting Started with Create React App
 
