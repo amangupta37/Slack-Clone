@@ -4,6 +4,8 @@ Real-time chatting application built using React
 
 [View live](https://slack-clone-aman-gupta.vercel.app/)
 
+<img src="./FE.png" />
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
